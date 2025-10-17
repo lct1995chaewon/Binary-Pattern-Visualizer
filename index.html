@@ -202,30 +202,30 @@ const weights=document.getElementById("weights");
 
 let n=6;update();
 
-up。onclick=()=>{ if(n<16){ n++; update(); } };
-down。onclick=()=>{ if(n>1){ n--; update(); } };
+up.onclick=()=>{ if(n<16){ n++; update(); } };
+down.onclick=()=>{ if(n>1){ n--; update(); } };
 
 function update(){
   bitsEl.value=n;
   // unsigned
-  const uMax=Math.pow(2，n)-1;
+  const uMax=Math.pow(2,n)-1;
   uMinBin.value="0".repeat(n);
   uMinDec.value="0";
-  uMaxBin.value=uMax.toString(2).padStart(n，"0");
+  uMaxBin.value=uMax.toString(2).padStart(n,"0");
   uMaxDec.value=uMax;
   // 2’s complement
-  const tMin=-Math.pow(2，n-1);
-  const tMax=Math.pow(2，n-1)-1;
-  tMinBin.value=toTwos(tMin，n);
+  const tMin=-Math.pow(2,n-1);
+  const tMax=Math.pow(2,n-1)-1;
+  tMinBin.value=toTwos(tMin,n);
   tMinDec.value=tMin;
-  tMaxBin.value=toTwos(tMax，n);
+  tMaxBin.value=toTwos(tMax,n);
   tMaxDec.value=tMax;
   drawGrid();
 }
-function toTwos(val，bits){
-  if(val>=0)return val.toString(2).padStart(bits，"0");
-  const mod=Math.pow(2，bits);
-  return (mod+val).toString(2).padStart(bits，"1");
+function toTwos(val,bits){
+  if(val>=0)return val.toString(2).padStart(bits,"0");
+  const mod=Math.pow(2,bits);
+  return (mod+val).toString(2).padStart(bits,"1");
 }
 function drawGrid(){
   weights.innerHTML="";
@@ -234,7 +234,7 @@ function drawGrid(){
     div.className="column";
     const weight=document.createElement("div");
     weight.className="weight "+(i===n-1?"negative":"positive");
-    const val=(i===n-1)?-Math.pow(2，i):Math。pow(2，i);
+    const val=(i===n-1)?-Math.pow(2,i):Math.pow(2,i);
     weight.textContent=val;
     const bit=document.createElement("div");
     bit.className="bit";
