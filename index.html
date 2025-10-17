@@ -3,143 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>N 位元二進值範圍 ｜ Binary Pattern Visualizer</title>
+<title>N 位元二進值範圍 </title>
 <style>
-:root{
-  --bg:#f6f9ff;
-  --panel:#fff;
-  --accent-dark:#3f51b5;
-  --blue:#1565c0;
-  --red:#d32f2f;
-  --gold:#f9a825;
-  --line:#666;
-}
 body{
   font-family:"Noto Sans TC","Segoe UI",sans-serif;
-  background:var(--bg);
+  background:#f6f9ff;
   margin:0;
-  padding:26px 10px;
+  padding:30px 10px;
   display:flex;
   justify-content:center;
 }
 .container{
-  background:var(--panel);
+  background:#fff;
   border-radius:14px;
-  box-shadow:0 6px 18px #0001;
-  padding:24px;
-  max-width:720px;
-  width:100%;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
+  padding:24px 26px;
+  max-width:700px;
   text-align:center;
+  width:100%;
 }
-h1{
-  color:var(--accent-dark);
-  margin-bottom:14px;
-}
+h1{color:#3f51b5;margin:0 0 18px;}
 .n-control{
   display:inline-flex;
   align-items:center;
+  gap:10px;
   background:#eef1ff;
   border-radius:10px;
-  padding:8px 14px;
-  gap:10px;
+  padding:10px 16px;
+  margin-bottom:12px;
 }
-.n-box{
-  font-weight:bold;
-  font-size:22px;
-  width:60px;
-  text-align:center;
-  border:none;
-  border-radius:6px;
-  box-shadow:inset 0 0 0 2px #ccc;
-  background:#fff;
-}
-.btn{
-  background:var(--accent-dark);
-  color:#fff;
-  width:30px;height:30px;
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;font-size:18px;
-  transition:.2s;
-}
-.btn:hover{background:#273497;}
-.section{
-  text-align:center;
-  border-radius:12px;
-  padding:14px 8px;
-  margin-top:14px;
-}
-#unsigned{background:#fff6d6;}
+.n-box{font-weight:bold;font-size:22px;width:60px;text-align:center;border:none;background:#fff;border-radius:6px;box-shadow:inset 0 0 0 2px #ccc;}
+.btn{background:#3f51b5;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:bold;line-height:0;}
+.section{margin-top:16px;padding:14px 8px;border-radius:12px;}
+#unsigned{background:#fff6d6;} 
 #twos{background:#e8f3ff;}
-.section h2{margin-top:0;font-size:20px;}
-.row{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  margin:6px 0;
-}
-label{font-size:16px;color:#555;}
-input{
-  font-family:"JetBrains Mono",monospace;
-  font-size:18px;
-  text-align:center;
-  border:none;
-  border-radius:5px;
-  background:#fafbff;
-  padding:5px 8px;
-  min-width:140px;
-}
-.value-blue{color:var(--blue);}
-.value-red{color:var(--red);}
-
-/* --- aligned grid frame --- */
+label{font-size:16px;color:#555;margin-right:4px;}
+.row{display:flex;justify-content:center;align-items:center;gap:10px;margin:6px 0;flex-wrap:wrap;}
+input{font-family:"JetBrains Mono",monospace;font-size:18px;text-align:center;border:none;background:#fafbff;border-radius:5px;padding:5px 8px;min-width:140px;}
+.value-blue{color:#1565c0;}
+.value-red{color:#d32f2f;}
 .weight-frame{
-  margin-top:26px;
-  border-top:2px solid var(--line);
-  border-bottom:2px solid var(--line);
+  margin-top:24px;
+  border-top:2px solid #666;
+  border-bottom:2px solid #666;
   display:grid;
-  justify-content:center;
-  gap:0;
-  grid-auto-columns:60px;
   grid-auto-flow:column;
+  grid-auto-columns:60px;
+  justify-content:center;
   overflow-x:auto;
-  padding:8px 0;
 }
 .column{
-  border-left:1px solid var(--line);
+  border-left:1px solid #666;
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
-  padding:4px 0;
+  padding:6px 0;
 }
-.column:last-child{border-right:1px solid var(--line);}
-.weight{
-  font-family:"JetBrains Mono",monospace;
-  font-size:18px;
-  font-weight:600;
-  line-height:1.2;
-}
-.bit{
-  font-family:"JetBrains Mono",monospace;
-  font-size:14px;
-  color:#555;
-  margin-top:4px;
-}
-.negative{color:var(--red);}
-.positive{color:var(--gold);}
-footer{
-  margin-top:22px;
-  font-size:13px;
-  color:#777;
-}
-@media(max-width:560px){
-  .weight-frame{grid-auto-columns:48px;}
-  .weight{font-size:16px;}
-  .bit{font-size:12px;}
-}
+.column:last-child{border-right:1px solid #666;}
+.weight{font-family:"JetBrains Mono",monospace;font-weight:600;}
+.bit{font-family:"JetBrains Mono",monospace;font-size:14px;color:#555;margin-top:4px;}
+.negative{color:#d32f2f;} .positive{color:#f9a825;}
+footer{margin-top:20px;font-size:12px;color:#666;}
+@media(max-width:540px){.weight-frame{grid-auto-columns:48px;}.weight{font-size:16px;}.bit{font-size:12px;}}
 </style>
 </head>
 <body>
@@ -183,67 +108,70 @@ footer{
 
   <div id="weights" class="weight-frame"></div>
 
-  <footer>© 2025 Binary Pattern Visualizer ｜ lct1995chaewon × GPT‑5 Chat</footer>
+  <footer>© 2025 Binary Pattern Visualizer | lct1995chaewon × GPT‑5 Chat</footer>
 </div>
 
 <script>
-const bitsEl=document.getElementById("bits");
-const up=document.getElementById("up");
-const down=document.getElementById("down");
-const uMinBin=document.getElementById("u-min-bin");
-const uMinDec=document.getElementById("u-min-dec");
-const uMaxBin=document.getElementById("u-max-bin");
-const uMaxDec=document.getElementById("u-max-dec");
-const tMinBin=document.getElementById("t-min-bin");
-const tMinDec=document.getElementById("t-min-dec");
-const tMaxBin=document.getElementById("t-max-bin");
-const tMaxDec=document.getElementById("t-max-dec");
-const weights=document.getElementById("weights");
+(function(){
+  const bitsEl=document.getElementById("bits");
+  const up=document.getElementById("up");
+  const down=document.getElementById("down");
+  const uMinBin=document.getElementById("u-min-bin");
+  const uMinDec=document.getElementById("u-min-dec");
+  const uMaxBin=document.getElementById("u-max-bin");
+  const uMaxDec=document.getElementById("u-max-dec");
+  const tMinBin=document.getElementById("t-min-bin");
+  const tMinDec=document.getElementById("t-min-dec");
+  const tMaxBin=document.getElementById("t-max-bin");
+  const tMaxDec=document.getElementById("t-max-dec");
+  const weights=document.getElementById("weights");
 
-let n=6;update();
+  let n=6;
+  up.onclick=()=>{if(n<16){n++;update();}};
+  down.onclick=()=>{if(n>1){n--;update();}};
+  update();
 
-up.onclick=()=>{ if(n<16){ n++; update(); } };
-down.onclick=()=>{ if(n>1){ n--; update(); } };
+  function update(){
+    bitsEl.value=n;
+    const uMax=Math.pow(2,n)-1;
+    uMinBin.value="0".repeat(n);
+    uMinDec.value="0";
+    uMaxBin.value=uMax.toString(2).padStart(n,"0");
+    uMaxDec.value=uMax;
 
-function update(){
-  bitsEl.value=n;
-  // unsigned
-  const uMax=Math.pow(2,n)-1;
-  uMinBin.value="0".repeat(n);
-  uMinDec.value="0";
-  uMaxBin.value=uMax.toString(2).padStart(n,"0");
-  uMaxDec.value=uMax;
-  // 2’s complement
-  const tMin=-Math.pow(2,n-1);
-  const tMax=Math.pow(2,n-1)-1;
-  tMinBin.value=toTwos(tMin,n);
-  tMinDec.value=tMin;
-  tMaxBin.value=toTwos(tMax,n);
-  tMaxDec.value=tMax;
-  drawGrid();
-}
-function toTwos(val,bits){
-  if(val>=0)return val.toString(2).padStart(bits,"0");
-  const mod=Math.pow(2,bits);
-  return (mod+val).toString(2).padStart(bits,"1");
-}
-function drawGrid(){
-  weights.innerHTML="";
-  for(let i=n-1;i>=0;i--){
-    const div=document.createElement("div");
-    div.className="column";
-    const weight=document.createElement("div");
-    weight.className="weight "+(i===n-1?"negative":"positive");
-    const val=(i===n-1)?-Math.pow(2,i):Math.pow(2,i);
-    weight.textContent=val;
-    const bit=document.createElement("div");
-    bit.className="bit";
-    bit.textContent=(i+1)+"bit";
-    div.appendChild(weight);
-    div.appendChild(bit);
-    weights.appendChild(div);
+    const tMin=-Math.pow(2,n-1);
+    const tMax=Math.pow(2,n-1)-1;
+    tMinBin.value=toTwos(tMin,n);
+    tMinDec.value=tMin;
+    tMaxBin.value=toTwos(tMax,n);
+    tMaxDec.value=tMax;
+    drawGrid();
   }
-}
+
+  function toTwos(val,bits){
+    if(val>=0)return val.toString(2).padStart(bits,"0");
+    const mod=Math.pow(2,bits);
+    return (mod+val).toString(2).padStart(bits,"1");
+  }
+
+  function drawGrid(){
+    weights.innerHTML="";
+    for(let i=n-1;i>=0;i--){
+      const div=document.createElement("div");
+      div.className="column";
+      const w=document.createElement("div");
+      const v=(i===n-1)?-Math.pow(2,i):Math.pow(2,i);
+      w.className="weight "+(i===n-1?"negative":"positive");
+      w.textContent=v;
+      const b=document.createElement("div");
+      b.className="bit";
+      b.textContent=(i+1)+"bit";
+      div.appendChild(w);
+      div.appendChild(b);
+      weights.appendChild(div);
+    }
+  }
+})();
 </script>
 </body>
 </html>
