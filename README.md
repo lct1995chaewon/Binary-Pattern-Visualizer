@@ -6,12 +6,7 @@
 
 ## 🌐 線上試玩
 🔗 **GitHub Pages :**  
-[https://你的使用者名稱.github.io/你的倉庫名稱/](https://你的使用者名稱.github.io/你的倉庫名稱/)
-
----
-
-## 📸 介面預覽
-![App Screenshot](screenshot.png)
+https://lct1995chaewon.github.io/Binary-Pattern-Visualizer/
 
 ---
 
